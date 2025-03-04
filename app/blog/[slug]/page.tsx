@@ -5,11 +5,12 @@ import Layout from '../../../components/Layout'
 import BlogPost from '../../../components/BlogPost'
 import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../../config'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const blog = allBlogs.find((blog) => blog.slug === params.slug) as Blog
 
   if (!blog) {
@@ -41,7 +42,8 @@ export async function generateMetadata({
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
 
   if (!blog) {

@@ -19,11 +19,12 @@ import { Icon } from '../../../components/Icon'
 import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../../config'
 
 // Metadata function for SEO
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const SEO = {
     title: `Tag: #${params.slug}`,
     description: `Browse all posts tagged with #${params.slug}. Discover related articles, inspiration, podcasts, tools and resources.`,
@@ -52,7 +53,8 @@ export async function generateMetadata({
   }
 }
 
-export default function TagPage({ params }: { params: { slug: string } }) {
+export default async function TagPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const allPosts = [
     ...allBlogs,
     ...allInspirations,

@@ -37,7 +37,8 @@ export function generateMetadata(): Metadata {
   }
 }
 
-export default function BlogPage({ params }: { params: { page: string } }) {
+export default async function BlogPage(props: { params: Promise<{ page: string }> }) {
+  const params = await props.params;
   const currentPage = parseInt(params.page || '1', 10)
 
   // Pick relevant fields from blogs and sort by date

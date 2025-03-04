@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"contentlayer2 dev\" \"next dev\" \"next-image-export-optimizer\"",
+    "dev": "concurrently \"contentlayer2 dev\" \"next dev --turbopack\" \"next-image-export-optimizer\"",
     "build": "contentlayer2 build && next build && next-image-export-optimizer",
     "start": "next start",
     "postbuild": "next-sitemap"
@@ -11,22 +11,22 @@
   "dependencies": {
     "@heroicons/react": "2.2.0",
     "framer-motion": "11.18.2",
-    "next": "14.2.24",
+    "next": "15.2.1",
     "next-image-export-optimizer": "1.18.0",
     "prismjs": "1.29.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@types/node": "22.13.9",
     "@types/prismjs": "1.26.5",
-    "@types/react": "18.3.18",
+    "@types/react": "19.0.10",
     "@types/mdx": "2.0.13",
     "autoprefixer": "10.4.20",
     "concurrently": "8.2.2",
     "contentlayer2": "0.5.4",
     "eslint": "8.57.1",
-    "eslint-config-next": "14.2.24",
+    "eslint-config-next": "15.2.1",
     "next-contentlayer2": "0.5.4",
     "next-seo": "6.6.0",
     "next-sitemap": "4.2.3",
@@ -35,11 +35,6 @@
     "remark-gfm": "4.0.1",
     "tailwindcss": "3.4.17",
     "typescript": "5.8.2"
-  },
-  "overrides": {
-    "react": "18.3.1",
-    "@types/react": "18.3.18",
-    "react-dom": "18.3.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

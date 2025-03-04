@@ -7,11 +7,12 @@ import PostHeader from '../../../components/PostHeader'
 import { SITE_URL, SITE_NAME, AUTHOR_NAME } from '../../../config'
 
 // Metadata function for SEO
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const resource = allResources.find(
     (resource) => resource.slug === params.slug
   ) as Resources
@@ -45,7 +46,8 @@ export async function generateMetadata({
   }
 }
 
-export default function ResourcePage({ params }: { params: { slug: string } }) {
+export default async function ResourcePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const resource = allResources.find(
     (resource) => resource.slug === params.slug
   )

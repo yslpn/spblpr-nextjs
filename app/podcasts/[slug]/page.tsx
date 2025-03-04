@@ -9,11 +9,12 @@ import ExportedImage from 'next-image-export-optimizer'
 import Link from 'next/link'
 
 // Metadata function for SEO
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const podcast = allPodcasts.find((podcast) => podcast.slug === params.slug) as Podcasts
 
   if (!podcast) {
@@ -45,7 +46,8 @@ export async function generateMetadata({
   }
 }
 
-export default function PodcastPage({ params }: { params: { slug: string } }) {
+export default async function PodcastPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const podcast = allPodcasts.find(
     (podcast: Podcasts) => podcast.slug === params.slug
   )
