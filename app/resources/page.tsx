@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { pick } from '@contentlayer2/client'
+import { pick } from 'contentlayer2/client'
 import {
   Resources as ResourceType,
   allResources,

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { pick } from '@contentlayer2/client'
+import { pick } from 'contentlayer2/client'
 import { Tools as ToolsType, allTools } from '../../.contentlayer/generated'
 import Layout from '../../components/Layout'
 import ToolsPostCard from '../../components/cards/ToolsPostCard'

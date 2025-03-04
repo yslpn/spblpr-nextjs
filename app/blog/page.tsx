@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 import { allBlogs, Blog } from '../../.contentlayer/generated'
-import { pick } from '@contentlayer2/client'
 import { sortByDate } from '../../utils'
 import { extractUniqueTags } from '../../utils/tags'
 import Layout from '../../components/Layout'
 import CategoryHeader from '../../components/CategoryHeader'
 import BlogPostCard from '../../components/cards/BlogPostCard'
 import { SITE_NAME, SITE_URL } from '../../config'
+import { pick } from 'contentlayer2/client'
 
 export function generateMetadata(): Metadata {
   const SEO = {
