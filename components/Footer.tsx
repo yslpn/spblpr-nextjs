@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-center gap-2 outline-offset-8 rounded"
+          className="flex items-center gap-2 outline-offset-8 rounded-sm"
         >
           <span>Scroll to Top</span>
           <Icon name="up" className="size-4" />

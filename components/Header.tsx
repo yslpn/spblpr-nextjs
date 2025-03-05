@@ -15,7 +15,7 @@ export default function Header() {
       <nav className="flex w-full justify-between items-center">
         <Link
           href="/"
-          className="font-bold opacity-80 hover:opacity-100 transition-opacity rounded outline-offset-8 pointer-events-auto"
+          className="font-bold opacity-80 hover:opacity-100 transition-opacity rounded-sm outline-offset-8 pointer-events-auto"
         >
           dc.tips
         </Link>

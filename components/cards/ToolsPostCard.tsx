@@ -3,7 +3,7 @@ import { Tools } from '../../.contentlayer/generated'
 import ExportedImage from 'next-image-export-optimizer'
 
 const cardClasses =
-  'w-full flex gap-3 sm:gap-2 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl hover:dark:bg-slate-700 transition-shadow dark:transition-colors'
+  'w-full flex gap-3 sm:gap-2 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow dark:transition-colors'
 
 export default function ToolsPostCard({ post }: { post: Tools }) {
   return (

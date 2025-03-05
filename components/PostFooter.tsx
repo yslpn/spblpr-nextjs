@@ -68,7 +68,7 @@ export default function PostFooter({
           {prevPost && (
             <Link
               href={`/${prevPost.templateKey}/${prevPost.slug}`}
-              className="text-balance max-w-[24rem] group rounded outline-offset-[1rem]"
+              className="text-balance max-w-[24rem] group rounded-sm outline-offset-[1rem]"
             >
               <span className="flex items-center gap-2 mb-2 justify-start text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 duration-300">
                 <Icon name="prev" className="size-3" />
@@ -80,7 +80,7 @@ export default function PostFooter({
           {nextPost && (
             <Link
               href={`/${nextPost.templateKey}/${nextPost.slug}`}
-              className="text-end text-balance max-w-[24rem] group rounded outline-offset-[1rem] ml-auto"
+              className="text-end text-balance max-w-[24rem] group rounded-sm outline-offset-[1rem] ml-auto"
             >
               <span className="flex items-center gap-2 mb-2 justify-end text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 duration-300">
                 Next

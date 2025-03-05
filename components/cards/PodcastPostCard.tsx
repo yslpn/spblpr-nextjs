@@ -3,7 +3,7 @@ import { Podcasts } from '../../.contentlayer/generated'
 import ExportedImage from 'next-image-export-optimizer'
 
 const cardClasses =
-  'w-full flex flex-col gap-2 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl hover:dark:bg-slate-700 transition-shadow transition-300 dark:transition-colors'
+  'w-full flex flex-col gap-2 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow transition-300 dark:transition-colors'
 
 export default function PodcastPostCard({ post }: { post: Podcasts }) {
   return (
