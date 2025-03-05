@@ -1,17 +1,16 @@
-'use client'
+"use client";
 
-import '../styles/index.css'
-import '../styles/prism-a11y-dark.css'
-
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { AnimatePresence } from 'framer-motion'
-import NetlifyIdentityRedirect from '../components/NetlifyIdentityRedirect'
+import { AnimatePresence } from "framer-motion";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import NetlifyIdentityRedirect from "../components/NetlifyIdentityRedirect";
+import "../styles/index.css";
+import "../styles/prism-a11y-dark.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -35,5 +34,5 @@ export default function RootLayout({
         <NetlifyIdentityRedirect />
       </body>
     </html>
-  )
+  );
 }

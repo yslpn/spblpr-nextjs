@@ -1,254 +1,254 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 
 const Page = defineDocumentType(() => ({
-  name: 'Page',
+  name: "Page",
   filePathPattern: `page/*.md`,
-  contentType: 'markdown',
+  contentType: "markdown",
   fields: {
     slug: {
-      type: 'string',
+      type: "string",
     },
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     gallery: {
-      type: 'list',
-      of: { type: 'string' },
+      type: "list",
+      of: { type: "string" },
     },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
     },
   },
-}))
+}));
 
 const Blog = defineDocumentType(() => ({
-  name: 'Blog',
+  name: "Blog",
   filePathPattern: `blog/*.md`,
-  contentType: 'markdown',
+  contentType: "markdown",
   fields: {
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     date: {
-      type: 'date',
+      type: "date",
       required: false,
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     tags: {
-      type: 'json',
+      type: "json",
       required: false,
     },
     templateKey: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     featured: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
     },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
     },
   },
-}))
+}));
 
 const Inspiration = defineDocumentType(() => ({
-  name: 'Inspiration',
+  name: "Inspiration",
   filePathPattern: `inspiration/*.mdx`,
-  contentType: 'mdx',
+  contentType: "mdx",
   fields: {
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     date: {
-      type: 'date',
+      type: "date",
       required: false,
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     tags: {
-      type: 'json',
+      type: "json",
       required: false,
     },
     image: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     templateKey: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     featured: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
     },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx/, ""),
     },
   },
-}))
+}));
 
 const Podcasts = defineDocumentType(() => ({
-  name: 'Podcasts',
+  name: "Podcasts",
   filePathPattern: `podcasts/*.md`,
-  contentType: 'markdown',
+  contentType: "markdown",
   fields: {
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     date: {
-      type: 'date',
+      type: "date",
       required: false,
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     tags: {
-      type: 'json',
+      type: "json",
       required: false,
     },
     link: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     image: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     templateKey: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     featured: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
     },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
     },
   },
-}))
+}));
 
 const Tools = defineDocumentType(() => ({
-  name: 'Tools',
+  name: "Tools",
   filePathPattern: `tools/*.md`,
-  contentType: 'markdown',
+  contentType: "markdown",
   fields: {
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     date: {
-      type: 'date',
+      type: "date",
       required: false,
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     tags: {
-      type: 'json',
+      type: "json",
       required: false,
     },
     link: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     image: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     templateKey: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     featured: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
     },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
     },
   },
-}))
+}));
 
 const Resources = defineDocumentType(() => ({
-  name: 'Resources',
+  name: "Resources",
   filePathPattern: `resources/*.md`,
-  contentType: 'markdown',
+  contentType: "markdown",
   fields: {
     title: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     date: {
-      type: 'date',
+      type: "date",
       required: false,
     },
     description: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     tags: {
-      type: 'json',
+      type: "json",
       required: false,
     },
     link: {
-      type: 'string',
+      type: "string",
       required: false,
     },
     image: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     templateKey: {
-      type: 'string',
+      type: "string",
       required: true,
     },
     featured: {
-      type: 'boolean',
+      type: "boolean",
       required: false,
     },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
     },
   },
-}))
+}));
 
 export default makeSource({
-  contentDirPath: 'content',
+  contentDirPath: "content",
   documentTypes: [Page, Blog, Inspiration, Podcasts, Tools, Resources],
   disableImportAliasWarning: true,
-})
+});

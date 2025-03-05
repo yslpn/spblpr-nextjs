@@ -1,6 +1,6 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-
+import { Metadata } from "next";
+import ExportedImage from "next-image-export-optimizer";
+import Link from "next/link";
 import {
   Blog,
   Inspiration,
@@ -12,29 +12,26 @@ import {
   allPodcasts,
   allResources,
   allTools,
-} from '../../../.contentlayer/generated'
-import Layout from '../../../components/Layout'
-import ExportedImage from 'next-image-export-optimizer'
-import { Icon } from '../../../components/Icon'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../../config'
+} from "../../../.contentlayer/generated";
+import { Icon } from "../../../components/Icon";
+import Layout from "../../../components/Layout";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../../../config";
 
 // Metadata function for SEO
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const SEO = {
     title: `Tag: #${params.slug}`,
     description: `Browse all posts tagged with #${params.slug}. Discover related articles, inspiration, podcasts, tools and resources.`,
-  }
+  };
 
   return {
     title: SEO.title,
     description: SEO.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/tags/${params.slug}/`,
       title: SEO.title,
       description: SEO.description,
@@ -45,15 +42,17 @@ export async function generateMetadata(
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
-export default async function TagPage(props: { params: Promise<{ slug: string }> }) {
+export default async function TagPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
   const allPosts = [
     ...allBlogs,
@@ -61,12 +60,12 @@ export default async function TagPage(props: { params: Promise<{ slug: string }>
     ...allPodcasts,
     ...allResources,
     ...allTools,
-  ]
+  ];
 
   // const posts = extractUniqueTags(allPosts)
 
   // get all the posts from this tag
-  const posts = allPosts.filter((post) => post.tags?.includes(params.slug))
+  const posts = allPosts.filter((post) => post.tags?.includes(params.slug));
 
   return (
     <>
@@ -113,7 +112,7 @@ export default async function TagPage(props: { params: Promise<{ slug: string }>
 
                     <div className="flex flex-col gap-2 w-full">
                       <span className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-bold">
-                        <Icon name={post.templateKey} className="size-3" />{' '}
+                        <Icon name={post.templateKey} className="size-3" />{" "}
                         {post.type}
                       </span>
                       <h2 className="font-bold text-lg text-balance">
@@ -128,11 +127,11 @@ export default async function TagPage(props: { params: Promise<{ slug: string }>
                     </div>
                   </Link>
                 </div>
-              )
+              );
             })}
           </main>
         </section>
       </Layout>
     </>
-  )
+  );
 }

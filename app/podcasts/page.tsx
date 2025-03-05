@@ -1,27 +1,27 @@
-import { Metadata } from 'next'
-import { pick } from 'contentlayer2/client'
+import { pick } from "contentlayer2/client";
+import { Metadata } from "next";
 import {
   Podcasts as PodcastType,
   allPodcasts,
-} from '../../.contentlayer/generated'
-import Layout from '../../components/Layout'
-import PodcastPostCard from '../../components/cards/PodcastPostCard'
-import CategoryHeader from '../../components/CategoryHeader'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../config'
+} from "../../.contentlayer/generated";
+import CategoryHeader from "../../components/CategoryHeader";
+import Layout from "../../components/Layout";
+import PodcastPostCard from "../../components/cards/PodcastPostCard";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../../config";
 
 // Metadata function for SEO
 export function generateMetadata(): Metadata {
   const SEO = {
     title: `A Selection of Podcasts by ${AUTHOR_NAME} | ${SITE_NAME}`,
     description:
-      'Listen to a curated selection of podcasts covering web development, design, business, and electronic music. Perfect for creatives and tech enthusiasts.',
-  }
+      "Listen to a curated selection of podcasts covering web development, design, business, and electronic music. Perfect for creatives and tech enthusiasts.",
+  };
 
   return {
     title: SEO.title,
     description: SEO.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/podcasts/`,
       title: SEO.title,
       description: SEO.description,
@@ -32,25 +32,25 @@ export function generateMetadata(): Metadata {
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 //  help of pick get require filter value
 export default function Podcasts() {
   const podcasts = allPodcasts.map((podcasts) =>
     pick(podcasts, [
-      'title',
-      'date',
-      'slug',
-      'description',
-      'image',
-      'templateKey',
-    ])
-  )
+      "title",
+      "date",
+      "slug",
+      "description",
+      "image",
+      "templateKey",
+    ]),
+  );
 
   return (
     <Layout>
@@ -63,10 +63,10 @@ export default function Podcasts() {
           {podcasts.map((post) => {
             return (
               <PodcastPostCard key={post.slug} post={post as PodcastType} />
-            )
+            );
           })}
         </div>
       </section>
     </Layout>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import { Icon } from './Icon'
+import { Icon } from "./Icon";
 
 export default function CategoryHeader({
   title,
   templateKey,
 }: {
-  title: string
-  templateKey: string
+  title: string;
+  templateKey: string;
 }) {
   return (
     <>
@@ -20,5 +20,5 @@ export default function CategoryHeader({
         {/* <button>Filters</button> */}
       </header>
     </>
-  )
+  );
 }

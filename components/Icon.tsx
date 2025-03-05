@@ -11,14 +11,14 @@ import {
   TagIcon,
   WrenchScrewdriverIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
+} from "@heroicons/react/24/outline";
 
 export const Icon = ({
   name,
   className,
 }: {
-  name: string
-  className?: string
+  name: string;
+  className?: string;
 }) => {
   const icons: { [key: string]: any } = {
     blog: CodeBracketIcon,
@@ -33,13 +33,13 @@ export const Icon = ({
     tag: TagIcon,
     tools: WrenchScrewdriverIcon,
     up: ArrowUpCircleIcon,
-  }
+  };
 
-  const IconComponent = icons[name]
+  const IconComponent = icons[name];
 
   if (!IconComponent) {
-    return null
+    return null;
   }
 
-  return <IconComponent className={className} />
-}
+  return <IconComponent className={className} />;
+};

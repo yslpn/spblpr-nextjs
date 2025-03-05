@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 import {
   allBlogs,
   allInspirations,
@@ -10,42 +10,42 @@ import {
   Podcasts,
   Resources,
   Tools,
-} from '../.contentlayer/generated'
-import Tag from './Tag'
-import { Icon } from './Icon'
+} from "../.contentlayer/generated";
+import { Icon } from "./Icon";
+import Tag from "./Tag";
 
 export default function PostFooter({
   data,
 }: {
-  data: Blog | Inspiration | Podcasts | Resources | Tools
+  data: Blog | Inspiration | Podcasts | Resources | Tools;
 }) {
-  let navPosts: (Blog | Inspiration | Podcasts | Resources | Tools)[] = []
+  let navPosts: (Blog | Inspiration | Podcasts | Resources | Tools)[] = [];
 
   switch (data.templateKey) {
-    case 'blog':
-      navPosts = allBlogs as Blog[]
-      break
-    case 'inspiration':
-      navPosts = allInspirations as Inspiration[]
-      break
-    case 'podcasts':
-      navPosts = allPodcasts as Podcasts[]
-      break
-    case 'resources':
-      navPosts = allResources as Resources[]
-      break
-    case 'tools':
-      navPosts = allTools as Tools[]
-      break
+    case "blog":
+      navPosts = allBlogs as Blog[];
+      break;
+    case "inspiration":
+      navPosts = allInspirations as Inspiration[];
+      break;
+    case "podcasts":
+      navPosts = allPodcasts as Podcasts[];
+      break;
+    case "resources":
+      navPosts = allResources as Resources[];
+      break;
+    case "tools":
+      navPosts = allTools as Tools[];
+      break;
   }
 
   // Find the index of the current post
-  const currentIndex = navPosts.findIndex((post) => post.slug === data.slug)
+  const currentIndex = navPosts.findIndex((post) => post.slug === data.slug);
 
   // Determine the previous and next posts
-  const prevPost = currentIndex > 0 ? navPosts[currentIndex - 1] : null
+  const prevPost = currentIndex > 0 ? navPosts[currentIndex - 1] : null;
   const nextPost =
-    currentIndex < navPosts.length - 1 ? navPosts[currentIndex + 1] : null
+    currentIndex < navPosts.length - 1 ? navPosts[currentIndex + 1] : null;
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function PostFooter({
                 <li key={tag}>
                   <Tag tag={tag} />
                 </li>
-              )
+              );
             })}
           </ul>
         </div>
@@ -92,5 +92,5 @@ export default function PostFooter({
         </div>
       )}
     </>
-  )
+  );
 }

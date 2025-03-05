@@ -1,27 +1,25 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { allBlogs, Blog } from '../../../.contentlayer/generated'
-import Layout from '../../../components/Layout'
-import BlogPost from '../../../components/BlogPost'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../../config'
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { allBlogs, Blog } from "../../../.contentlayer/generated";
+import BlogPost from "../../../components/BlogPost";
+import Layout from "../../../components/Layout";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../../../config";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
-  const blog = allBlogs.find((blog) => blog.slug === params.slug) as Blog
+  const blog = allBlogs.find((blog) => blog.slug === params.slug) as Blog;
 
   if (!blog) {
-    return notFound()
+    return notFound();
   }
 
   return {
     title: blog.title,
     description: blog.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/blog/${blog.slug}/`,
       title: blog.title,
       description: blog.description,
@@ -34,25 +32,27 @@ export async function generateMetadata(
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
-export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
-  const blog = allBlogs.find((blog) => blog.slug === params.slug)
+  const blog = allBlogs.find((blog) => blog.slug === params.slug);
 
   if (!blog) {
-    return notFound()
+    return notFound();
   }
 
   return (
     <Layout>
       <BlogPost blog={blog} />
     </Layout>
-  )
+  );
 }

@@ -1,16 +1,16 @@
-import Link from 'next/link'
-import { Tools } from '../../.contentlayer/generated'
-import ExportedImage from 'next-image-export-optimizer'
+import ExportedImage from "next-image-export-optimizer";
+import Link from "next/link";
+import { Tools } from "../../.contentlayer/generated";
 
 const cardClasses =
-  'w-full flex gap-3 sm:gap-2 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow dark:transition-colors'
+  "w-full flex gap-3 sm:gap-2 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow dark:transition-colors";
 
 export default function ToolsPostCard({ post }: { post: Tools }) {
   return (
     <Link
       key={post.slug}
       href={`/tools/${post.slug}/`}
-      className={cardClasses + ' items-center group overflow-hidden'}
+      className={cardClasses + " items-center group overflow-hidden"}
     >
       <figure className="overflow-hidden size-16 sm:size-24 shrink-0 rounded-xl shadow-lg bg-slate-200 dark:bg-slate-700">
         <ExportedImage
@@ -30,5 +30,5 @@ export default function ToolsPostCard({ post }: { post: Tools }) {
         </span>
       </div>
     </Link>
-  )
+  );
 }

@@ -1,31 +1,31 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { allPodcasts, Podcasts } from '../../../.contentlayer/generated'
-import Layout from '../../../components/Layout'
-import PostHeader from '../../../components/PostHeader'
-import PostFooter from '../../../components/PostFooter'
-import { SITE_URL, SITE_NAME, AUTHOR_NAME } from '../../../config'
-import ExportedImage from 'next-image-export-optimizer'
-import Link from 'next/link'
+import { Metadata } from "next";
+import ExportedImage from "next-image-export-optimizer";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { allPodcasts, Podcasts } from "../../../.contentlayer/generated";
+import Layout from "../../../components/Layout";
+import PostFooter from "../../../components/PostFooter";
+import PostHeader from "../../../components/PostHeader";
+import { SITE_URL, SITE_NAME, AUTHOR_NAME } from "../../../config";
 
 // Metadata function for SEO
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
-  const podcast = allPodcasts.find((podcast) => podcast.slug === params.slug) as Podcasts
+  const podcast = allPodcasts.find(
+    (podcast) => podcast.slug === params.slug,
+  ) as Podcasts;
 
   if (!podcast) {
-    return notFound()
+    return notFound();
   }
 
   return {
     title: podcast.title,
     description: podcast.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/podcast/${podcast.slug}`,
       title: podcast.title,
       description: podcast.description,
@@ -38,22 +38,24 @@ export async function generateMetadata(
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
-export default async function PodcastPage(props: { params: Promise<{ slug: string }> }) {
+export default async function PodcastPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
   const podcast = allPodcasts.find(
-    (podcast: Podcasts) => podcast.slug === params.slug
-  )
+    (podcast: Podcasts) => podcast.slug === params.slug,
+  );
 
   if (!podcast) {
-    return notFound()
+    return notFound();
   }
 
   return (
@@ -82,5 +84,5 @@ export default async function PodcastPage(props: { params: Promise<{ slug: strin
         <PostFooter data={podcast} />
       </article>
     </Layout>
-  )
+  );
 }

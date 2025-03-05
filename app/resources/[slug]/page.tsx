@@ -1,31 +1,29 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { Resources, allResources } from '../../../.contentlayer/generated'
-import Layout from '../../../components/Layout'
-import PostFooter from '../../../components/PostFooter'
-import PostHeader from '../../../components/PostHeader'
-import { SITE_URL, SITE_NAME, AUTHOR_NAME } from '../../../config'
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Resources, allResources } from "../../../.contentlayer/generated";
+import Layout from "../../../components/Layout";
+import PostFooter from "../../../components/PostFooter";
+import PostHeader from "../../../components/PostHeader";
+import { SITE_URL, SITE_NAME, AUTHOR_NAME } from "../../../config";
 
 // Metadata function for SEO
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const resource = allResources.find(
-    (resource) => resource.slug === params.slug
-  ) as Resources
+    (resource) => resource.slug === params.slug,
+  ) as Resources;
 
   if (!resource) {
-    return notFound()
+    return notFound();
   }
 
   return {
     title: resource.title,
     description: resource.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/resources/${resource.slug}/`,
       title: resource.title,
       description: resource.description,
@@ -38,22 +36,24 @@ export async function generateMetadata(
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
-export default async function ResourcePage(props: { params: Promise<{ slug: string }> }) {
+export default async function ResourcePage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
   const resource = allResources.find(
-    (resource) => resource.slug === params.slug
-  )
+    (resource) => resource.slug === params.slug,
+  );
 
   if (!resource) {
-    return notFound()
+    return notFound();
   }
 
   return (
@@ -80,5 +80,5 @@ export default async function ResourcePage(props: { params: Promise<{ slug: stri
         <PostFooter data={resource} />
       </article>
     </Layout>
-  )
+  );
 }

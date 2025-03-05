@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -182,14 +182,14 @@ main {
 }
 
 /* Manually set the background color of the code blocks to match the theme: */
-.blog-post :not(pre) > code[class*='language-'],
-.blog-post pre[class*='language-'] {
+.blog-post :not(pre) > code[class*="language-"],
+.blog-post pre[class*="language-"] {
   background: #1e293c;
 }
 
 @media (prefers-color-scheme: dark) {
-  .blog-post :not(pre) > code[class*='language-'],
-  .blog-post pre[class*='language-'] {
+  .blog-post :not(pre) > code[class*="language-"],
+  .blog-post pre[class*="language-"] {
     background: #1e293ccc;
   }
 }
