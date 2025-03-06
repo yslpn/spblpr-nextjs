@@ -22,7 +22,7 @@ export default function RootLayout({
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         />
       </head>
-      <body className="flex flex-col h-[100vh] text-slate-900 dark:text-slate-50 dark:bg-slate-900 hyphens-auto">
+      <body className="flex flex-col h-[100vh] text-slate-900 dark:text-slate-50 bg-customBlack hyphens-auto">
         <Header />
         <AnimatePresence
           mode="wait"
