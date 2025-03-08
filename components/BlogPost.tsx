@@ -1,22 +1,23 @@
-'use client' // Marks this as a client component
+"use client";
 
-import { useEffect } from 'react'
-import Prism from 'prismjs'
-import 'prismjs/components/prism-bash'
-import 'prismjs/components/prism-css'
-import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-jsx'
-import 'prismjs/components/prism-php'
-import 'prismjs/components/prism-pug'
-import 'prismjs/components/prism-markup-templating'
-import { Blog } from '../.contentlayer/generated'
-import PostHeader from './PostHeader'
-import PostFooter from './PostFooter'
+// Marks this as a client component
+import { useEffect } from "react";
+import Prism from "prismjs";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-markup-templating";
+import "prismjs/components/prism-php";
+import "prismjs/components/prism-pug";
+import { Blog } from "../.contentlayer/generated";
+import PostFooter from "./PostFooter";
+import PostHeader from "./PostHeader";
 
 export default function BlogPost({ blog }: { blog: Blog }) {
   useEffect(() => {
-    Prism.highlightAll()
-  }, [])
+    Prism.highlightAll();
+  }, []);
 
   return (
     <article className="max-w-5xl p-4 sm:p-12 sm:pt-0 m-auto">
@@ -27,5 +28,5 @@ export default function BlogPost({ blog }: { blog: Blog }) {
       />
       <PostFooter data={blog} />
     </article>
-  )
+  );
 }

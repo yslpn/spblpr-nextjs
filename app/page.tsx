@@ -1,5 +1,6 @@
-import { pick } from 'contentlayer2/client'
-import Layout from '../components/Layout'
+import { pick } from "contentlayer2/client";
+import { Metadata } from "next";
+import Link from "next/link";
 import {
   Blog,
   Inspiration,
@@ -12,26 +13,25 @@ import {
   allPodcasts,
   allResources,
   allTools,
-} from '../.contentlayer/generated'
-import Link from 'next/link'
-import BlogCardPost from '../components/cards/BlogPostCard'
-import InspirationPostCard from '../components/cards/InspirationPostCard'
-import PodcastPostCard from '../components/cards/PodcastPostCard'
-import ToolsPostCard from '../components/cards/ToolsPostCard'
-import { Metadata } from 'next'
-import { Icon } from '../components/Icon'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../config'
+} from "../.contentlayer/generated";
+import { Icon } from "../components/Icon";
+import Layout from "../components/Layout";
+import BlogCardPost from "../components/cards/BlogPostCard";
+import InspirationPostCard from "../components/cards/InspirationPostCard";
+import PodcastPostCard from "../components/cards/PodcastPostCard";
+import ToolsPostCard from "../components/cards/ToolsPostCard";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../config";
 
 // Get page data
-const home = allPages.find((home) => home?.slug === 'home')
+const home = allPages.find((home) => home?.slug === "home");
 
 // Metadata function for SEO
 export function generateMetadata(): Metadata {
   const SEO = {
-    title: home?.title || 'Home',
+    title: home?.title || "Home",
     description: home?.description || `Welcome to the Homepage of ${SITE_NAME}`,
     image: `${SITE_URL}/og-card.png`,
-  }
+  };
 
   return {
     title: SEO.title,
@@ -47,47 +47,47 @@ export function generateMetadata(): Metadata {
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
 // Get all posts and pick specific fields
 export default function Home() {
   let blogs = allBlogs.map((post: Blog) =>
-    pick(post, ['featured', 'title', 'date', 'slug'])
-  )
+    pick(post, ["featured", "title", "date", "slug"]),
+  );
   blogs = blogs
     .filter((post) => post.featured === true)
     .sort(
       (a, b) =>
-        new Date(b.date ?? '').getTime() - new Date(a.date ?? '').getTime()
-    )
+        new Date(b.date ?? "").getTime() - new Date(a.date ?? "").getTime(),
+    );
 
   let inspirations = allInspirations.map((post: Inspiration) =>
-    pick(post, ['featured', 'image', 'title', 'date', 'slug'])
-  )
+    pick(post, ["featured", "image", "title", "date", "slug"]),
+  );
   inspirations = inspirations
     .filter((post) => post.featured === true)
-    .slice(0, 6)
+    .slice(0, 6);
 
   let podcasts = allPodcasts.map((post: Podcasts) =>
-    pick(post, ['featured', 'image', 'title', 'date', 'slug'])
-  )
-  podcasts = podcasts.filter((post) => post.featured === true).slice(0, 4)
+    pick(post, ["featured", "image", "title", "date", "slug"]),
+  );
+  podcasts = podcasts.filter((post) => post.featured === true).slice(0, 4);
 
   let tools = allTools.map((post: Tools) =>
-    pick(post, ['featured', 'image', 'title', 'date', 'slug', 'description'])
-  )
-  tools = tools.filter((post) => post.featured === true).slice(0, 6)
+    pick(post, ["featured", "image", "title", "date", "slug", "description"]),
+  );
+  tools = tools.filter((post) => post.featured === true).slice(0, 6);
 
   let resources = allResources.map((post: Resources) =>
-    pick(post, ['featured', 'image', 'title', 'date', 'slug', 'description'])
-  )
-  resources = resources.filter((post) => post.featured === true).slice(0, 4)
+    pick(post, ["featured", "image", "title", "date", "slug", "description"]),
+  );
+  resources = resources.filter((post) => post.featured === true).slice(0, 4);
 
   return (
     <Layout>
@@ -160,5 +160,5 @@ export default function Home() {
         </section>
       </div>
     </Layout>
-  )
+  );
 }

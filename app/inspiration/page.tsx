@@ -1,24 +1,24 @@
-import { Metadata } from 'next'
-import { Inspiration, allInspirations } from '../../.contentlayer/generated'
-import { pick } from 'contentlayer2/client'
-import Layout from '../../components/Layout'
-import InspirationPostCard from '../../components/cards/InspirationPostCard'
-import CategoryHeader from '../../components/CategoryHeader'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../config'
+import { pick } from "contentlayer2/client";
+import { Metadata } from "next";
+import { Inspiration, allInspirations } from "../../.contentlayer/generated";
+import CategoryHeader from "../../components/CategoryHeader";
+import Layout from "../../components/Layout";
+import InspirationPostCard from "../../components/cards/InspirationPostCard";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../../config";
 
 // Metadata function for SEO
 export function generateMetadata(): Metadata {
   const SEO = {
     title: `A Selection of Inspiration by ${AUTHOR_NAME} | ${SITE_NAME}`,
     description:
-      'Find inspiration through web intros, show reels, and creative showcases, curated for designers and developers.',
-  }
+      "Find inspiration through web intros, show reels, and creative showcases, curated for designers and developers.",
+  };
 
   return {
     title: SEO.title,
     description: SEO.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/inspiration/`,
       title: SEO.title,
       description: SEO.description,
@@ -29,26 +29,26 @@ export function generateMetadata(): Metadata {
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
 export default function InspirationPage() {
   //  help of pick get require filter value
   const inspirations = allInspirations.map((inspirations) =>
     pick(inspirations, [
-      'title',
-      'date',
-      'slug',
-      'description',
-      'image',
-      'templateKey',
-    ])
-  )
+      "title",
+      "date",
+      "slug",
+      "description",
+      "image",
+      "templateKey",
+    ]),
+  );
 
   return (
     <Layout>
@@ -62,10 +62,10 @@ export default function InspirationPage() {
           {inspirations.map((post) => {
             return (
               <InspirationPostCard key={post.slug} post={post as Inspiration} />
-            )
+            );
           })}
         </div>
       </section>
     </Layout>
-  )
+  );
 }

@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/51784f6e-1f73-4db9-ad5e-c0c514a47181/deploy-status)](https://app.netlify.com/sites/nextjs-blog-tailwind-starter/deploys)
 
-Welcome to the [**design-code.tips**](https://design-code.tips/) Next.js starter! 
+Welcome to the [**design-code.tips**](https://design-code.tips/) Next.js starter!
 
 This open-source starter template is built with **Next.js 14**, **Tailwind CSS**, **Contentlayer**, and **Decap CMS**. It's designed to be a simple and customizable way to launch a modern blog, with support for MDX and multiple categories like Code Blog, Inspiration, Podcasts, Tools, and Resources.
 
@@ -176,7 +176,7 @@ Customize the project to suit your needs by editing the following files:
 Example usage:
 
 ```tsx
-import ExportedImage from 'next-image-export-optimizer'
+import ExportedImage from "next-image-export-optimizer";
 
 <ExportedImage
   src="/media/example.jpg"
@@ -184,7 +184,7 @@ import ExportedImage from 'next-image-export-optimizer'
   width={800}
   height={600}
   placeholder="blur"
-/>
+/>;
 ```
 
 ### TypeScript and Contentlayer Integration
@@ -194,33 +194,33 @@ This project uses [**Contentlayer**](https://contentlayer.dev/) to [automaticall
 Below is an example of the TypeScript types generated for the **Blog** document:
 
 ```ts
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 
 const Blog = defineDocumentType(() => ({
-  name: 'Blog',
+  name: "Blog",
   filePathPattern: `blog/*.md`,
-  contentType: 'markdown',
+  contentType: "markdown",
   fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: false },
-    description: { type: 'string', required: false },
-    tags: { type: 'json', required: false },
-    templateKey: { type: 'string', required: true },
-    featured: { type: 'boolean', required: false },
+    title: { type: "string", required: true },
+    date: { type: "date", required: false },
+    description: { type: "string", required: false },
+    tags: { type: "json", required: false },
+    templateKey: { type: "string", required: true },
+    featured: { type: "boolean", required: false },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.md/, ""),
     },
   },
-}))
+}));
 
 export default makeSource({
-  contentDirPath: 'content',
+  contentDirPath: "content",
   documentTypes: [Page, Blog, Inspiration, Podcasts, Tools, Resources],
   disableImportAliasWarning: true,
-})
+});
 ```
 
 > [!NOTE]  
@@ -250,7 +250,7 @@ In this example, `allBlogs` is an array of `Blog` types, and we're using the `pi
 When working with content from `allBlogs`, you can assert the type to ensure it's a `Blog` type:
 
 ```tsx
-const blog = allBlogs.find((b) => b.slug === params.slug) as Blog
+const blog = allBlogs.find((b) => b.slug === params.slug) as Blog;
 ```
 
 This way, you can access the fields of the `Blog` type without any issues.

@@ -1,19 +1,19 @@
-import Link from 'next/link'
+import Link from "next/link";
 import {
   Blog,
   Inspiration,
   Podcasts,
   Resources,
   Tools,
-} from '../.contentlayer/generated'
-import { formatDate } from '../utils'
-import { Icon } from './Icon'
-import { AUTHOR_NAME } from '../config'
+} from "../.contentlayer/generated";
+import { AUTHOR_NAME } from "../config";
+import { formatDate } from "../utils";
+import { Icon } from "./Icon";
 
 export default function PostHeader({
   data,
 }: {
-  data: Blog | Inspiration | Podcasts | Resources | Tools
+  data: Blog | Inspiration | Podcasts | Resources | Tools;
 }) {
   return (
     <>
@@ -34,12 +34,12 @@ export default function PostHeader({
           </Link>
           <p className="tracking-wide leading-4">
             <small>
-              Posted by{' '}
-              <Link href={'/about/'} className="font-semibold hover:underline">
+              Posted by{" "}
+              <Link href={"/about/"} className="font-semibold hover:underline">
                 {AUTHOR_NAME}
-              </Link>{' '}
+              </Link>{" "}
               <span className="inline-flex">
-                {' '}
+                {" "}
                 on {`${formatDate(new Date(data.date as any))}`}
               </span>
             </small>
@@ -47,5 +47,5 @@ export default function PostHeader({
         </div>
       </header>
     </>
-  )
+  );
 }

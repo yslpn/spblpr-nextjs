@@ -4,7 +4,7 @@
  * @type {import('next').NextConfig}
  */
 
-const { withContentlayer } = require('next-contentlayer2');
+const { withContentlayer } = require("next-contentlayer2");
 
 const nextconfig = {
   reactStrictMode: true,
@@ -33,7 +33,6 @@ const nextconfig = {
     // The default value is 0 seconds.
     nextImageExportOptimizer_remoteImageCacheTTL: "0",
   },
-}
+};
 
-
-module.exports = withContentlayer(nextconfig)
+module.exports = withContentlayer(nextconfig);

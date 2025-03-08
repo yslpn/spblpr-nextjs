@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { Icon } from './Icon'
+import { useRouter } from "next/navigation";
+import { Icon } from "./Icon";
 
 export default function BackButton() {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <button
@@ -15,5 +15,5 @@ export default function BackButton() {
     >
       <Icon name="prev" className="size-3" /> Back
     </button>
-  )
+  );
 }

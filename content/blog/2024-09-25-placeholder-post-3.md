@@ -14,4 +14,4 @@ tags:
 
 ## This is a Placeholder Post
 
-Feel free to replace this content with your own! 
+Feel free to replace this content with your own!

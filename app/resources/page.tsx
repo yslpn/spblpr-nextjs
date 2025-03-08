@@ -1,27 +1,27 @@
-import { Metadata } from 'next'
-import { pick } from 'contentlayer2/client'
+import { pick } from "contentlayer2/client";
+import { Metadata } from "next";
 import {
   Resources as ResourceType,
   allResources,
-} from '../../.contentlayer/generated'
-import Layout from '../../components/Layout'
-import ResourcesPostCard from '../../components/cards/ResourcePostCard'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../config'
-import CategoryHeader from '../../components/CategoryHeader'
+} from "../../.contentlayer/generated";
+import CategoryHeader from "../../components/CategoryHeader";
+import Layout from "../../components/Layout";
+import ResourcesPostCard from "../../components/cards/ResourcePostCard";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../../config";
 
 // Metadata function for SEO
 export function generateMetadata(): Metadata {
   const SEO = {
     title: `A Collection of Resources by ${AUTHOR_NAME} | ${SITE_NAME}`,
     description:
-      'Explore a curated collection of resources related with accessibility, ui and ux patterns, and source materials for developers and designers.',
-  }
+      "Explore a curated collection of resources related with accessibility, ui and ux patterns, and source materials for developers and designers.",
+  };
 
   return {
     title: SEO.title,
     description: SEO.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/tools/`,
       title: SEO.title,
       description: SEO.description,
@@ -32,26 +32,26 @@ export function generateMetadata(): Metadata {
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
 export default function Resources() {
   //  help of pick get require filter value
   const resources = allResources.map((resources) =>
     pick(resources, [
-      'title',
-      'date',
-      'slug',
-      'description',
-      'image',
-      'templateKey',
-    ])
-  )
+      "title",
+      "date",
+      "slug",
+      "description",
+      "image",
+      "templateKey",
+    ]),
+  );
 
   return (
     <Layout>
@@ -68,10 +68,10 @@ export default function Resources() {
                 key={resourcesItem.slug}
                 post={resourcesItem as ResourceType}
               />
-            )
+            );
           })}
         </div>
       </section>
     </Layout>
-  )
+  );
 }

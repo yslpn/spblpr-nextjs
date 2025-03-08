@@ -10,5 +10,5 @@ export default function Video({ src }: { src: string }) {
         className="w-full bg-slate-500"
       ></video>
     </p>
-  )
+  );
 }

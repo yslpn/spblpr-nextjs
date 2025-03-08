@@ -1,16 +1,16 @@
-import Link from 'next/link'
-import { Resources } from '../../.contentlayer/generated'
-import ExportedImage from 'next-image-export-optimizer'
+import ExportedImage from "next-image-export-optimizer";
+import Link from "next/link";
+import { Resources } from "../../.contentlayer/generated";
 
 const cardClasses =
-  'w-full flex flex-col sm:flex-row gap-2 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl hover:dark:bg-slate-700 transition-shadow dark:transition-colors'
+  "w-full flex flex-col sm:flex-row gap-2 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow dark:transition-colors";
 
 export default function ResourcesPostCard({ post }: { post: Resources }) {
   return (
     <Link
       key={post.slug}
       href={`/resources/${post.slug}/`}
-      className={cardClasses + ' items-center group overflow-hidden'}
+      className={cardClasses + " items-center group overflow-hidden"}
     >
       <figure className="overflow-hidden size-36 sm:size-24 shrink-0 rounded-lg shadow-lg bg-slate-200 dark:bg-slate-700">
         <ExportedImage
@@ -28,5 +28,5 @@ export default function ResourcesPostCard({ post }: { post: Resources }) {
         </p>
       </div>
     </Link>
-  )
+  );
 }

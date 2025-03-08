@@ -9,7 +9,7 @@ export function extractUniqueTags(tags: any[]) {
   let uniqueTags = Array.from(new Set(allTags));
 
   // Remove undefined tags
-  uniqueTags = uniqueTags.filter(tag => tag !== undefined);
+  uniqueTags = uniqueTags.filter((tag) => tag !== undefined);
 
   // Sort tags alphabetically
   uniqueTags.sort();

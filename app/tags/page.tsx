@@ -1,25 +1,25 @@
-import { Metadata } from 'next'
+import { Metadata } from "next";
 import {
   allBlogs,
   allInspirations,
   allPodcasts,
   allResources,
   allTools,
-} from '../../.contentlayer/generated'
-import Layout from '../../components/Layout'
-import Tag from '../../components/Tag'
-import { extractUniqueTags } from '../../utils/tags'
-import CategoryHeader from '../../components/CategoryHeader'
-import { SITE_NAME, SITE_URL } from '../../config'
+} from "../../.contentlayer/generated";
+import CategoryHeader from "../../components/CategoryHeader";
+import Layout from "../../components/Layout";
+import Tag from "../../components/Tag";
+import { SITE_NAME, SITE_URL } from "../../config";
+import { extractUniqueTags } from "../../utils/tags";
 
 // Metadata function for SEO
 export function generateMetadata(): Metadata {
   const SEO = {
     title: `Explore all #Tags available at ${SITE_NAME}`,
     description:
-      'Explore a comprehensive list of tags and categories, from design and development to tools and podcasts. Click on any tag to discover new insights.',
+      "Explore a comprehensive list of tags and categories, from design and development to tools and podcasts. Click on any tag to discover new insights.",
     image: `${SITE_URL}/og-card.png`,
-  }
+  };
 
   return {
     title: SEO.title,
@@ -34,12 +34,12 @@ export function generateMetadata(): Metadata {
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
 export default function TagsPage() {
@@ -49,9 +49,9 @@ export default function TagsPage() {
     ...allPodcasts,
     ...allResources,
     ...allTools,
-  ]
+  ];
 
-  const tags = extractUniqueTags(allPosts)
+  const tags = extractUniqueTags(allPosts);
 
   return (
     <Layout>
@@ -61,14 +61,14 @@ export default function TagsPage() {
         <div className="my-4 flex flex-wrap gap-12 justify-center">
           {/* Group tags by first letter */}
           {Array.from(
-            new Set(tags.map((tag: any) => tag.charAt(0).toUpperCase()))
+            new Set(tags.map((tag: any) => tag.charAt(0).toUpperCase())),
           ) // Get unique first letters
             .sort() // Sort alphabetically
             .map((firstLetter) => {
               // Filter tags starting with the current first letter
               const tagsStartingWithLetter = tags.filter(
-                (tag: any) => tag.charAt(0).toUpperCase() === firstLetter
-              )
+                (tag: any) => tag.charAt(0).toUpperCase() === firstLetter,
+              );
               return (
                 <div key={firstLetter}>
                   <h2 className="text-4xl  m-4">{firstLetter}</h2>
@@ -80,10 +80,10 @@ export default function TagsPage() {
                     ))}
                   </ul>
                 </div>
-              )
+              );
             })}
         </div>
       </section>
     </Layout>
-  )
+  );
 }

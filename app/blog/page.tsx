@@ -1,20 +1,20 @@
-import { Metadata } from 'next'
-import { allBlogs, Blog } from '../../.contentlayer/generated'
-import { sortByDate } from '../../utils'
-import { extractUniqueTags } from '../../utils/tags'
-import Layout from '../../components/Layout'
-import CategoryHeader from '../../components/CategoryHeader'
-import BlogPostCard from '../../components/cards/BlogPostCard'
-import { SITE_NAME, SITE_URL } from '../../config'
-import { pick } from 'contentlayer2/client'
+import { pick } from "contentlayer2/client";
+import { Metadata } from "next";
+import { allBlogs, Blog } from "../../.contentlayer/generated";
+import CategoryHeader from "../../components/CategoryHeader";
+import Layout from "../../components/Layout";
+import BlogPostCard from "../../components/cards/BlogPostCard";
+import { SITE_NAME, SITE_URL } from "../../config";
+import { sortByDate } from "../../utils";
+import { extractUniqueTags } from "../../utils/tags";
 
 export function generateMetadata(): Metadata {
   const SEO = {
-    title: 'Code Blog by Nuno Marques | Design & Development Tips',
+    title: "Code Blog by Nuno Marques | Design & Development Tips",
     description:
-      'Discover the latest blogs on code, web design and development. Stay up to date with the latest trends and technologies, with code examples.',
+      "Discover the latest blogs on code, web design and development. Stay up to date with the latest trends and technologies, with code examples.",
     image: `${SITE_URL}/og-card.png`,
-  }
+  };
 
   return {
     title: SEO.title,
@@ -29,33 +29,35 @@ export function generateMetadata(): Metadata {
           width: 1600,
           height: 800,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
-export default async function BlogPage(props: { params: Promise<{ page: string }> }) {
+export default async function BlogPage(props: {
+  params: Promise<{ page: string }>;
+}) {
   const params = await props.params;
-  const currentPage = parseInt(params.page || '1', 10)
+  const currentPage = parseInt(params.page || "1", 10);
 
   // Pick relevant fields from blogs and sort by date
   let blogs = allBlogs.map((blog) =>
-    pick(blog, ['title', 'date', 'slug', 'description', 'templateKey'])
-  )
-  blogs = blogs.sort(sortByDate)
+    pick(blog, ["title", "date", "slug", "description", "templateKey"]),
+  );
+  blogs = blogs.sort(sortByDate);
 
   // Group blogs by year
   const groupedBlogs = blogs.reduce((acc: Record<string, Blog[]>, blog) => {
-    const year = new Date(blog.date!).getFullYear().toString()
-    if (!acc[year]) acc[year] = []
-    acc[year].push(blog as Blog)
-    return acc
-  }, {})
+    const year = new Date(blog.date!).getFullYear().toString();
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(blog as Blog);
+    return acc;
+  }, {});
 
-  const uniqueTags = extractUniqueTags(allBlogs)
+  const uniqueTags = extractUniqueTags(allBlogs);
 
   return (
     <Layout>
@@ -74,8 +76,8 @@ export default async function BlogPage(props: { params: Promise<{ page: string }
                   <div
                     className={`grid ${
                       groupedBlogs[year].length < 2
-                        ? 'xl:grid-cols-2'
-                        : 'xl:grid-cols-3'
+                        ? "xl:grid-cols-2"
+                        : "xl:grid-cols-3"
                     } gap-4 mb-24`}
                   >
                     {groupedBlogs[year].map((post) => (
@@ -88,5 +90,5 @@ export default async function BlogPage(props: { params: Promise<{ page: string }
         </div>
       </section>
     </Layout>
-  )
+  );
 }

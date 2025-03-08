@@ -1,16 +1,16 @@
-import Link from 'next/link'
-import { Podcasts } from '../../.contentlayer/generated'
-import ExportedImage from 'next-image-export-optimizer'
+import ExportedImage from "next-image-export-optimizer";
+import Link from "next/link";
+import { Podcasts } from "../../.contentlayer/generated";
 
 const cardClasses =
-  'w-full flex flex-col gap-2 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl hover:dark:bg-slate-700 transition-shadow transition-300 dark:transition-colors'
+  "w-full flex flex-col gap-2 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow transition-300 dark:transition-colors";
 
 export default function PodcastPostCard({ post }: { post: Podcasts }) {
   return (
     <Link
       key={post.slug}
       href={`/podcasts/${post.slug}/`}
-      className={cardClasses + ' p-0 group overflow-hidden'}
+      className={cardClasses + " p-0 group overflow-hidden"}
     >
       <figure className="overflow-hidden aspect-square bg-slate-200 dark:bg-slate-700">
         <ExportedImage
@@ -31,5 +31,5 @@ export default function PodcastPostCard({ post }: { post: Podcasts }) {
         )}
       </div>
     </Link>
-  )
+  );
 }

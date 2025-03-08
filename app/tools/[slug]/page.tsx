@@ -1,29 +1,27 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { allTools, Tools } from '../../../.contentlayer/generated'
-import Layout from '../../../components/Layout'
-import PostFooter from '../../../components/PostFooter'
-import PostHeader from '../../../components/PostHeader'
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from '../../../config'
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { allTools, Tools } from "../../../.contentlayer/generated";
+import Layout from "../../../components/Layout";
+import PostFooter from "../../../components/PostFooter";
+import PostHeader from "../../../components/PostHeader";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../../../config";
 
 // Metadata function for SEO
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
-  const tool = allTools.find((tool) => tool.slug === params.slug) as Tools
+  const tool = allTools.find((tool) => tool.slug === params.slug) as Tools;
 
   if (!tool) {
-    return notFound()
+    return notFound();
   }
 
   return {
     title: tool.title,
     description: tool.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       url: `${SITE_URL}/tool/${tool.slug}`,
       title: tool.title,
       description: tool.description,
@@ -36,20 +34,22 @@ export async function generateMetadata(
           width: 1600,
           height: 1200,
           alt: `${SITE_NAME}`,
-          type: 'image/jpeg',
+          type: "image/jpeg",
         },
       ],
       siteName: `${SITE_NAME}`,
     },
-  }
+  };
 }
 
-export default async function ToolPage(props: { params: Promise<{ slug: string }> }) {
+export default async function ToolPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
-  const tool = allTools.find((tool) => tool.slug === params.slug)
+  const tool = allTools.find((tool) => tool.slug === params.slug);
 
   if (!tool) {
-    return notFound()
+    return notFound();
   }
 
   return (
@@ -63,5 +63,5 @@ export default async function ToolPage(props: { params: Promise<{ slug: string }
         <PostFooter data={tool} />
       </article>
     </Layout>
-  )
+  );
 }

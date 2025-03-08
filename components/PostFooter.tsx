@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 import {
   allBlogs,
   allInspirations,
@@ -10,42 +10,42 @@ import {
   Podcasts,
   Resources,
   Tools,
-} from '../.contentlayer/generated'
-import Tag from './Tag'
-import { Icon } from './Icon'
+} from "../.contentlayer/generated";
+import { Icon } from "./Icon";
+import Tag from "./Tag";
 
 export default function PostFooter({
   data,
 }: {
-  data: Blog | Inspiration | Podcasts | Resources | Tools
+  data: Blog | Inspiration | Podcasts | Resources | Tools;
 }) {
-  let navPosts: (Blog | Inspiration | Podcasts | Resources | Tools)[] = []
+  let navPosts: (Blog | Inspiration | Podcasts | Resources | Tools)[] = [];
 
   switch (data.templateKey) {
-    case 'blog':
-      navPosts = allBlogs as Blog[]
-      break
-    case 'inspiration':
-      navPosts = allInspirations as Inspiration[]
-      break
-    case 'podcasts':
-      navPosts = allPodcasts as Podcasts[]
-      break
-    case 'resources':
-      navPosts = allResources as Resources[]
-      break
-    case 'tools':
-      navPosts = allTools as Tools[]
-      break
+    case "blog":
+      navPosts = allBlogs as Blog[];
+      break;
+    case "inspiration":
+      navPosts = allInspirations as Inspiration[];
+      break;
+    case "podcasts":
+      navPosts = allPodcasts as Podcasts[];
+      break;
+    case "resources":
+      navPosts = allResources as Resources[];
+      break;
+    case "tools":
+      navPosts = allTools as Tools[];
+      break;
   }
 
   // Find the index of the current post
-  const currentIndex = navPosts.findIndex((post) => post.slug === data.slug)
+  const currentIndex = navPosts.findIndex((post) => post.slug === data.slug);
 
   // Determine the previous and next posts
-  const prevPost = currentIndex > 0 ? navPosts[currentIndex - 1] : null
+  const prevPost = currentIndex > 0 ? navPosts[currentIndex - 1] : null;
   const nextPost =
-    currentIndex < navPosts.length - 1 ? navPosts[currentIndex + 1] : null
+    currentIndex < navPosts.length - 1 ? navPosts[currentIndex + 1] : null;
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function PostFooter({
                 <li key={tag}>
                   <Tag tag={tag} />
                 </li>
-              )
+              );
             })}
           </ul>
         </div>
@@ -68,7 +68,7 @@ export default function PostFooter({
           {prevPost && (
             <Link
               href={`/${prevPost.templateKey}/${prevPost.slug}`}
-              className="text-balance max-w-[24rem] group rounded outline-offset-[1rem]"
+              className="text-balance max-w-[24rem] group rounded-sm outline-offset-[1rem]"
             >
               <span className="flex items-center gap-2 mb-2 justify-start text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 duration-300">
                 <Icon name="prev" className="size-3" />
@@ -80,7 +80,7 @@ export default function PostFooter({
           {nextPost && (
             <Link
               href={`/${nextPost.templateKey}/${nextPost.slug}`}
-              className="text-end text-balance max-w-[24rem] group rounded outline-offset-[1rem] ml-auto"
+              className="text-end text-balance max-w-[24rem] group rounded-sm outline-offset-[1rem] ml-auto"
             >
               <span className="flex items-center gap-2 mb-2 justify-end text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 duration-300">
                 Next
@@ -92,5 +92,5 @@ export default function PostFooter({
         </div>
       )}
     </>
-  )
+  );
 }

@@ -1,19 +1,20 @@
-'use client' // Marks this as a client component
+"use client";
 
-import Link from 'next/link'
-import { Inspiration } from '../.contentlayer/generated'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
-import PostHeader from './PostHeader'
-import PostFooter from './PostFooter'
-import Video from './/Video'
-import type { MDXComponents } from 'mdx/types'
+// Marks this as a client component
+import type { MDXComponents } from "mdx/types";
+import { useMDXComponent } from "next-contentlayer2/hooks";
+import Link from "next/link";
+import { Inspiration } from "../.contentlayer/generated";
+import Video from ".//Video";
+import PostFooter from "./PostFooter";
+import PostHeader from "./PostHeader";
 
 export default function InspirationPost({
   inspiration,
 }: {
-  inspiration: Inspiration
+  inspiration: Inspiration;
 }) {
-  const MDXContent = useMDXComponent(inspiration.body.code)
+  const MDXContent = useMDXComponent(inspiration.body.code);
 
   // Define custom MDX components.
   const mdxComponents: MDXComponents = {
@@ -22,7 +23,7 @@ export default function InspirationPost({
     Video: ({ src }) => <Video src={src as string} />,
 
     // Add more custom components...
-  }
+  };
 
   return (
     <article className="max-w-5xl p-4 sm:p-12 sm:pt-0 m-auto">
@@ -34,5 +35,5 @@ export default function InspirationPost({
 
       <PostFooter data={inspiration as Inspiration} />
     </article>
-  )
+  );
 }
