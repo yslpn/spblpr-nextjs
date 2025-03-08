@@ -248,7 +248,7 @@ const Resources = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: "content",
+  contentDirPath: "src/content",
   documentTypes: [Page, Blog, Inspiration, Podcasts, Tools, Resources],
   disableImportAliasWarning: true,
 });
