@@ -1,17 +1,15 @@
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 
-type ButtonProps = {
-  name: string
-  href: string
+interface ButtonLinkProps extends LinkProps {
+  children: React.ReactNode
 }
-
-export const Button = (props: ButtonProps) => {
+export const ButtonLink = (props: ButtonLinkProps) => {
   return (
     <Link
       className="font-normal flex items-center justify-center w-[252px] bg-customGold h-[42px] text-customBlack text-sm hover:bg-customBlack hover:text-customGold transition-all duration-300"
-      href={props.href}
+      {...props}
     >
-      {props.name}
+      {props.children}
     </Link>
   )
 }

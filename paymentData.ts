@@ -1,5 +1,3 @@
-import { IPaymentData } from './app/donate/long/page'
-
 export const paymentData = {
   sber: {
     details: '2202 2062 8535 5959',

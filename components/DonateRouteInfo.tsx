@@ -1,5 +1,5 @@
 import { IPaymentItem } from '../app/donate/long/page'
-import { Button } from './Button'
+import { ButtonLink } from './ButtonLink'
 
 type DonateListProps = {
   donateList: [string, IPaymentItem][]
@@ -7,16 +7,16 @@ type DonateListProps = {
   header: string
 }
 
-export const DonateList = (props: DonateListProps) => {
+export const DonateRouteInfo = (props: DonateListProps) => {
   return (
     <div className={props.className}>
       <h1 className="text-customText font-bold text-2xl mb-5">
         {props.header}
       </h1>
       {props.donateList.map(([key, value]) => (
-        <Button
+        <ButtonLink
           key={key}
-          name={value.title}
+          children={value.title}
           href={key === 'telegram' ? `${value.details}` : `/donate/${key}`}
         />
       ))}

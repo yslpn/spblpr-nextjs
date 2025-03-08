@@ -2,8 +2,9 @@ import { notFound } from 'next/navigation'
 import { paymentData } from '../../../paymentData'
 import { CopyButton } from '../../../components/CopyButton'
 import QRCode from 'qrcode'
+import Layout from '../../../components/Layout'
 
-export default async function load({
+export default async function Load({
   params,
 }: {
   params: Promise<{ slug: keyof typeof paymentData }>
@@ -15,8 +16,12 @@ export default async function load({
     type: 'svg',
   })
 
-  if (isValidSlug) {
-    return (
+  if (!isValidSlug) {
+    return notFound()
+  }
+
+  return (
+    <Layout>
       <div className="flex flex-col gap-2 items-center justify-center h-full">
         <h1 className="text-customText font-bold text-2xl mb-5">
           {paymentData[newParams.slug].title}
@@ -33,7 +38,6 @@ export default async function load({
           ></span>
         )}
       </div>
-    )
-  }
-  return notFound()
+    </Layout>
+  )
 }
