@@ -2,9 +2,13 @@
 
 import { useEffect } from "react";
 
+interface NetlifyIdentity {
+  on: (event: string, callback: (user?: unknown) => void) => void;
+}
+
 declare global {
   interface Window {
-    netlifyIdentity: any;
+    netlifyIdentity: NetlifyIdentity;
   }
 }
 

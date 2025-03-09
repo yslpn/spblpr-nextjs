@@ -70,13 +70,13 @@ export default async function TagPage(props: {
   return (
     <>
       <Layout>
-        <section className="max-w-3xl m-auto flex flex-col gap-6 px-4 sm:px-12 mb-32">
+        <section className="m-auto mb-32 flex max-w-3xl flex-col gap-6 px-4 sm:px-12">
           <header className="mb-4">
             <h1 className="text-3xl font-bold">#{params.slug}</h1>
             <p>All content tagged with this tag.</p>
           </header>
 
-          <main className="w-full flex flex-col gap-4">
+          <main className="flex w-full flex-col gap-4">
             {(
               posts as
                 | Blog[]
@@ -84,44 +84,46 @@ export default async function TagPage(props: {
                 | Podcasts[]
                 | Resources[]
                 | Tools[]
-            ).map((post: any) => {
+            ).map((post) => {
               return (
                 <div key={post.slug}>
                   <Link
                     href={`/${post.templateKey}/${post.slug}`}
-                    className="p-4 sm:p-8 w-full flex flex-col md:flex-row-reverse gap-8 md:gap-12 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl dark:hover:bg-slate-700 transition-shadow dark:transition-colors"
+                    className="flex w-full flex-col gap-8 rounded-xl bg-white p-4 shadow-md transition-shadow hover:shadow-xl sm:p-8 md:flex-row-reverse md:gap-12 dark:bg-slate-800 dark:transition-colors dark:hover:bg-slate-700 dark:hover:shadow-2xl"
                   >
+                    {/* @ts-expect-error Property 'image' does not exist on type 'Blog'. */}
                     {post.image ? (
-                      <figure className="w-full md:max-w-48 flex justify-center items-center">
+                      <figure className="flex w-full items-center justify-center md:max-w-48">
                         <ExportedImage
                           width={240}
                           height={240}
+                          // @ts-expect-error Property 'image' does not exist on type 'Blog'.
                           src={post.image}
                           alt={post.title}
-                          className="w-full h-auto rounded-xl"
+                          className="h-auto w-full rounded-xl"
                         />
                       </figure>
                     ) : (
-                      <div className="w-full md:max-w-48 flex justify-center items-center bg-slate-200 dark:bg-slate-800 border border-white dark:border-slate-700 rounded-xl">
+                      <div className="flex w-full items-center justify-center rounded-xl border border-white bg-slate-200 md:max-w-48 dark:border-slate-700 dark:bg-slate-800">
                         <Icon
                           name={post.templateKey}
-                          className="w-full h-auto  size-12 sm:size-16 opacity-60"
+                          className="size-12 h-auto w-full opacity-60 sm:size-16"
                         />
                       </div>
                     )}
 
-                    <div className="flex flex-col gap-2 w-full">
-                      <span className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-bold">
+                    <div className="flex w-full flex-col gap-2">
+                      <span className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400">
                         <Icon name={post.templateKey} className="size-3" />{" "}
                         {post.type}
                       </span>
-                      <h2 className="font-bold text-lg text-balance">
+                      <h2 className="text-lg font-bold text-balance">
                         {post.title}
                       </h2>
-                      <p className="text-sm font-light tracking-wide text-ellipsis line-clamp-3 overflow-hidden">
+                      <p className="line-clamp-3 overflow-hidden text-sm font-light tracking-wide text-ellipsis">
                         {post.description}
                       </p>
-                      <span className="mt-auto pt-4 text-slate-500 dark:text-slate-400 text-sm font-bold">
+                      <span className="mt-auto pt-4 text-sm font-bold text-slate-500 dark:text-slate-400">
                         Read more &rarr;
                       </span>
                     </div>

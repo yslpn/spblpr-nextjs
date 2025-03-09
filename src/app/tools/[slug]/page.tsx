@@ -54,7 +54,7 @@ export default async function ToolPage(props: {
 
   return (
     <Layout>
-      <article className="max-w-4xl p-4 sm:p-12 sm:pt-0 m-auto">
+      <article className="m-auto max-w-4xl p-4 sm:p-12 sm:pt-0">
         <PostHeader data={tool} />
         <div
           className="blog-post mt-12"

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ExportedImage from "next-image-export-optimizer";
 import { notFound } from "next/navigation";
 import { Resources, allResources } from "../../../../.contentlayer/generated";
 import Layout from "../../../components/Layout";
@@ -58,18 +59,20 @@ export default async function ResourcePage(props: {
 
   return (
     <Layout>
-      <article className="max-w-4xl p-4 sm:p-12 sm:pt-0 m-auto">
+      <article className="m-auto max-w-4xl p-4 sm:p-12 sm:pt-0">
         <PostHeader data={resource as Resources} />
-        <figure className="flex flex-col gap-2 mt-12 bg-slate-200 dark:bg-slate-700 rounded-lg overflow-hidden">
+        <figure className="mt-12 flex flex-col gap-2 overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
           <a
             href={resource.link}
             target="_blank"
             title={`Open resource on a new tab`}
+            rel="noreferrer"
           >
-            <img
+            <ExportedImage
               src={resource.image}
               alt={resource.title}
-              className="w-full h-auto"
+              className="h-auto w-full"
+              loading="lazy"
             />
           </a>
         </figure>

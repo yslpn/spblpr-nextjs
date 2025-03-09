@@ -10,22 +10,22 @@ export default function ToolsPostCard({ post }: { post: Tools }) {
     <Link
       key={post.slug}
       href={`/tools/${post.slug}/`}
-      className={cardClasses + " items-center group overflow-hidden"}
+      className={cardClasses + " group items-center overflow-hidden"}
     >
-      <figure className="overflow-hidden size-16 sm:size-24 shrink-0 rounded-xl shadow-lg bg-slate-200 dark:bg-slate-700">
+      <figure className="size-16 shrink-0 overflow-hidden rounded-xl bg-slate-200 shadow-lg sm:size-24 dark:bg-slate-700">
         <ExportedImage
           src={post.image}
           alt={post.title}
           width={400}
           height={400}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
       </figure>
-      <div className="p-2 sm:p-4 flex flex-col gap-2">
-        <h2 className="font-bold text-balance text-sm sm:text-base">
+      <div className="flex flex-col gap-2 p-2 sm:p-4">
+        <h2 className="text-sm font-bold text-balance sm:text-base">
           {post.title}
         </h2>
-        <span className="hidden sm:flex mt-auto text-slate-500 text-sm font-bold">
+        <span className="mt-auto hidden text-sm font-bold text-slate-500 sm:flex">
           View tool &rarr;
         </span>
       </div>

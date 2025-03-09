@@ -55,13 +55,13 @@ export default function Resources() {
 
   return (
     <Layout>
-      <section className="max-w-2xl m-auto flex flex-col gap-6 px-4 sm:px-12 mb-32">
+      <section className="m-auto mb-32 flex max-w-2xl flex-col gap-6 px-4 sm:px-12">
         <CategoryHeader
           title="Resources"
           templateKey={resources[0].templateKey!}
         />
 
-        <div className="flex flex-wrap gap-4 w-full">
+        <div className="flex w-full flex-wrap gap-4">
           {resources.map((resourcesItem) => {
             return (
               <ResourcesPostCard

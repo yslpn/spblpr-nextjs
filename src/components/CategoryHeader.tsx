@@ -9,10 +9,10 @@ export default function CategoryHeader({
 }) {
   return (
     <>
-      <header className="flex justify-center items-end mb-12">
+      <header className="mb-12 flex items-end justify-center">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-            <Icon name={templateKey} className="size-6 sm:size-8 opacity-60" />
+          <h1 className="flex items-center gap-3 text-3xl font-bold md:text-4xl">
+            <Icon name={templateKey} className="size-6 opacity-60 sm:size-8" />
             <span>{title}</span>
           </h1>
         </div>

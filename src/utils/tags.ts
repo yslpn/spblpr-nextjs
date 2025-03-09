@@ -1,4 +1,14 @@
-export function extractUniqueTags(tags: any[]) {
+import {
+  Blog,
+  Inspiration,
+  Podcasts,
+  Resources,
+  Tools,
+} from "../../.contentlayer/generated";
+
+export function extractUniqueTags(
+  tags: (Blog | Inspiration | Podcasts | Tools | Resources)[],
+) {
   // Collect all tags from all posts
   const allTags = tags.reduce((acc, post) => {
     // Check if the post has tags

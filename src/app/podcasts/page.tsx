@@ -54,12 +54,12 @@ export default function Podcasts() {
 
   return (
     <Layout>
-      <section className="md:max-w-[87%] m-auto flex flex-col gap-6 px-4 sm:px-12 mb-32">
+      <section className="m-auto mb-32 flex flex-col gap-6 px-4 sm:px-12 md:max-w-[87%]">
         <CategoryHeader
           title={`Podcasts`}
           templateKey={podcasts[0].templateKey!}
         />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 w-full">
+        <div className="grid w-full gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {podcasts.map((post) => {
             return (
               <PodcastPostCard key={post.slug} post={post as PodcastType} />

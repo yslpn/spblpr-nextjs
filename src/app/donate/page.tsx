@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 export default function DonatePage() {
   return (
     <Layout>
-      <div className="flex flex-col items-center gap-5 justify-center h-full text-customText font-bold text-2xl mb-5">
+      <div className="text-customText mb-5 flex h-full flex-col items-center justify-center gap-5 text-2xl font-bold">
         <h1>Поддержите свободу в Санкт-Петербурге!</h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,8 +29,8 @@ export default function DonatePage() {
         <p className="text-xs font-normal">
           Пополните казну регионального отделения Либертарианской партии России.
         </p>
-        <ButtonLink children="Разовое пожертвование" href="./once" />
-        <ButtonLink children="Регулярное пожертвование" href="./long" />
+        <ButtonLink href="./once">Разовое пожертвование</ButtonLink>
+        <ButtonLink href="./long">Регулярное пожертвование</ButtonLink>
       </div>
     </Layout>
   );

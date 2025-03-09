@@ -20,7 +20,7 @@ export const Icon = ({
   name: string;
   className?: string;
 }) => {
-  const icons: { [key: string]: any } = {
+  const icons = {
     blog: CodeBracketIcon,
     burger: Bars2Icon,
     close: XMarkIcon,
@@ -35,7 +35,7 @@ export const Icon = ({
     up: ArrowUpCircleIcon,
   };
 
-  const IconComponent = icons[name];
+  const IconComponent = icons[name as keyof typeof icons];
 
   if (!IconComponent) {
     return null;

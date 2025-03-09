@@ -34,10 +34,12 @@ export function generateMetadata(): Metadata {
 export default function About() {
   return (
     <Layout>
-      <section className="flex flex-col gap-12 my-24 mx-auto max-w-5xl text-center">
+      <section className="mx-auto my-24 flex max-w-5xl flex-col gap-12 text-center">
         <h1 className="text-3xl font-bold">{about?.title}</h1>
         <div className="flex flex-col gap-8">
-          <ReactMarkdown remarkPlugins={[gfm]} children={about?.description} />
+          <ReactMarkdown remarkPlugins={[gfm]}>
+            {about?.description}
+          </ReactMarkdown>
         </div>
         <div className="flex flex-wrap justify-center gap-2"></div>
       </section>

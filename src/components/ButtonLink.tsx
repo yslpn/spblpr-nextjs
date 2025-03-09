@@ -6,7 +6,7 @@ interface ButtonLinkProps extends LinkProps {
 export const ButtonLink = (props: ButtonLinkProps) => {
   return (
     <Link
-      className="font-normal flex items-center justify-center w-[252px] bg-customGold h-[42px] text-customBlack text-sm hover:bg-customBlack hover:text-customGold transition-all duration-300"
+      className="bg-customGold text-customBlack hover:bg-customBlack hover:text-customGold flex h-[42px] w-[252px] items-center justify-center text-sm font-normal transition-all duration-300"
       {...props}
     >
       {props.children}

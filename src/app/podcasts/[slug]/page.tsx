@@ -60,20 +60,20 @@ export default async function PodcastPage(props: {
 
   return (
     <Layout>
-      <article className="max-w-4xl p-4 sm:p-12 sm:pt-0 m-auto">
+      <article className="m-auto max-w-4xl p-4 sm:p-12 sm:pt-0">
         <PostHeader data={podcast} />
         <Link
           href={podcast.link as string}
           title="Open podcast on a new tab"
           target="_blank"
-          className="block mb-16 lg:mb-24"
+          className="mb-16 block lg:mb-24"
         >
           <ExportedImage
             src={podcast.image}
             alt={podcast.title}
             width={1800}
             height={1800}
-            className="rounded-xl shadow-md hover:shadow-xl dark:hover:shadow-2xl transition-shadow transition-300"
+            className="transition-300 rounded-xl shadow-md transition-shadow hover:shadow-xl dark:hover:shadow-2xl"
             loading="lazy"
           />
         </Link>

@@ -10,7 +10,7 @@ export default function InspirationPostCard({ post }: { post: Inspiration }) {
     <Link
       key={post.slug}
       href={`/inspiration/${post.slug}/`}
-      className={InspirationCardClasses + " p-0 group overflow-hidden"}
+      className={InspirationCardClasses + " group overflow-hidden p-0"}
     >
       <figure className="overflow-hidden bg-slate-200 dark:bg-slate-700">
         <ExportedImage
@@ -18,14 +18,14 @@ export default function InspirationPostCard({ post }: { post: Inspiration }) {
           alt={post.title}
           width={800}
           height={450}
-          className="border-b border-b-slate-200 dark:border-b-slate-700 group-hover:scale-110 transition-transform duration-700 aspect-14/9 object-cover"
+          className="aspect-14/9 border-b border-b-slate-200 object-cover transition-transform duration-700 group-hover:scale-110 dark:border-b-slate-700"
           loading="lazy"
         />
       </figure>
-      <div className="p-4 sm:p-6 sm:pt-4 flex flex-col gap-2 text-pretty">
-        <h2 className="font-bold ">{post.title}</h2>
+      <div className="flex flex-col gap-2 p-4 text-pretty sm:p-6 sm:pt-4">
+        <h2 className="font-bold">{post.title}</h2>
         {post.description && (
-          <p className="text-sm font-light tracking-wide text-ellipsis line-clamp-3 overflow-hidden">
+          <p className="line-clamp-3 overflow-hidden text-sm font-light tracking-wide text-ellipsis">
             {post.description}
           </p>
         )}

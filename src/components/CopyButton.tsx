@@ -23,10 +23,10 @@ export const CopyButton = (props: CopyButtonProps) => {
   return (
     <button
       onClick={handleCopy}
-      className="group flex gap-2 bg-customGold p-2 hover:bg-customBlack transition duration-300"
+      className="group bg-customGold hover:bg-customBlack flex gap-2 p-2 transition duration-300"
     >
       <svg
-        className="w-full h-full fill-customBlack group-hover:fill-customGold transition duration-300"
+        className="fill-customBlack group-hover:fill-customGold h-full w-full transition duration-300"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -41,7 +41,7 @@ export const CopyButton = (props: CopyButtonProps) => {
       </svg>
 
       {copied && (
-        <span className="text-customBlack group-hover:text-customGold transition duration-300 text-sm">
+        <span className="text-customBlack group-hover:text-customGold text-sm transition duration-300">
           Скопировано!
         </span>
       )}

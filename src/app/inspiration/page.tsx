@@ -52,13 +52,13 @@ export default function InspirationPage() {
 
   return (
     <Layout>
-      <section className="md:max-w-[87%] m-auto flex flex-col gap-6 px-4 sm:px-12 mb-32">
+      <section className="m-auto mb-32 flex flex-col gap-6 px-4 sm:px-12 md:max-w-[87%]">
         <CategoryHeader
           title="Inspiration"
           templateKey={inspirations[0].templateKey!}
         />
 
-        <div className="grid lg:grid-cols-2 gap-4 w-full justify-center">
+        <div className="grid w-full justify-center gap-4 lg:grid-cols-2">
           {inspirations.map((post) => {
             return (
               <InspirationPostCard key={post.slug} post={post as Inspiration} />

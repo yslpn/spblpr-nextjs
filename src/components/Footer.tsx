@@ -6,14 +6,14 @@ export default function Footer() {
   currentYear = parseInt(currentYear.toString().substr(-2));
 
   return (
-    <footer className="p-4 sm:p-6 bg-slate-200 dark:bg-slate-800">
+    <footer className="bg-slate-200 p-4 sm:p-6 dark:bg-slate-800">
       <div className="flex items-center justify-between text-xs">
         <p className="text-slate-700 dark:text-slate-300">
           Copyright &copy; 2017-{currentYear}
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 outline-offset-8 rounded-sm"
+          className="flex items-center gap-2 rounded-sm outline-offset-8"
         >
           <span>Scroll to Top</span>
           <Icon name="up" className="size-4" />

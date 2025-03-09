@@ -19,14 +19,14 @@ export default function InspirationPost({
   // Define custom MDX components.
   const mdxComponents: MDXComponents = {
     // Override the default <a> element to use the next/link component.
-    a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-    Video: ({ src }) => <Video src={src as string} />,
+    a: ({ href, children }) => <Link href={href}>{children}</Link>,
+    Video: ({ src }: { src: string }) => <Video src={src} />,
 
     // Add more custom components...
   };
 
   return (
-    <article className="max-w-5xl p-4 sm:p-12 sm:pt-0 m-auto">
+    <article className="m-auto max-w-5xl p-4 sm:p-12 sm:pt-0">
       <PostHeader data={inspiration as Inspiration} />
 
       <div className="blog-post mt-12">

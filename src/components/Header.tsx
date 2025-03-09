@@ -11,27 +11,27 @@ export default function Header() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <header className="flex p-4 sm:p-6 fixed w-full z-10 pointer-events-none">
-      <nav className="flex w-full justify-between items-center">
+    <header className="pointer-events-none fixed z-10 flex w-full p-4 sm:p-6">
+      <nav className="flex w-full items-center justify-between">
         <Link
           href="/"
-          className="font-bold opacity-80 hover:opacity-100 transition-opacity rounded-sm outline-offset-8 pointer-events-auto"
+          className="pointer-events-auto rounded-sm font-bold opacity-80 outline-offset-8 transition-opacity hover:opacity-100"
         >
           dc.tips
         </Link>
 
-        <div className="absolute right-0 top-4 sm:top-5 group pointer-events-auto">
+        <div className="group pointer-events-auto absolute top-4 right-0 sm:top-5">
           <button
-            className="p-2 text-xs uppercase font-bold rounded-lg absolute right-4 sm:right-6 z-10 bg-white text-slate-700 dark:bg-slate-300 shadow-md hover:shadow-lg transition-shadow"
+            className="absolute right-4 z-10 rounded-lg bg-white p-2 text-xs font-bold text-slate-700 uppercase shadow-md transition-shadow hover:shadow-lg sm:right-6 dark:bg-slate-300"
             type="button"
             onClick={() => setNavbar(!navbar)}
           >
             {navbar ? (
-              <span aria-label="Close menu" className="w-4 block">
+              <span aria-label="Close menu" className="block w-4">
                 <Icon name="close" className="size-4" />
               </span>
             ) : (
-              <span className="flex gap-2 items-center group text-xs">
+              <span className="group flex items-center gap-2 text-xs">
                 Menu
                 <Icon name="burger" className="size-4" />
               </span>
@@ -39,7 +39,7 @@ export default function Header() {
           </button>
 
           <div className={`${navbar ? "" : "hidden"}`}>
-            <menu className="min-w-48 flex flex-col absolute right-4 sm:right-6 py-3 bg-white dark:bg-slate-100 rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
+            <menu className="absolute right-4 flex min-w-48 flex-col rounded-xl bg-white py-3 shadow-md transition-shadow group-hover:shadow-lg sm:right-6 dark:bg-slate-100">
               <li>
                 <Link
                   onClick={() => setNavbar(!navbar)}

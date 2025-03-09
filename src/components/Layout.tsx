@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-const Layout = ({ children }: { children: any }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (

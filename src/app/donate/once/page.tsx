@@ -9,13 +9,13 @@ export default function OnceDonatePage() {
   );
   return (
     <Layout>
-      <div className="flex flex-col items-center h-full justify-center">
+      <div className="flex h-full flex-col items-center justify-center">
         <DonateRouteInfo
           donateList={onceList}
-          className="flex flex-col gap-2 items-center justify-center mb-2"
+          className="mb-2 flex flex-col items-center justify-center gap-2"
           header="Разовое пожертвование"
         />
-        <ButtonLink children="Криптовалюты" href="/donate/crypto" />
+        <ButtonLink href="/donate/crypto">Криптовалюты</ButtonLink>
       </div>
     </Layout>
   );

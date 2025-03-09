@@ -10,22 +10,22 @@ export default function PodcastPostCard({ post }: { post: Podcasts }) {
     <Link
       key={post.slug}
       href={`/podcasts/${post.slug}/`}
-      className={cardClasses + " p-0 group overflow-hidden"}
+      className={cardClasses + " group overflow-hidden p-0"}
     >
-      <figure className="overflow-hidden aspect-square bg-slate-200 dark:bg-slate-700">
+      <figure className="aspect-square overflow-hidden bg-slate-200 dark:bg-slate-700">
         <ExportedImage
           src={post.image}
           alt={post.title}
           width={600}
           height={600}
-          className="border-b border-b-slate-200 dark:border-b-slate-700 group-hover:scale-110 transition-transform duration-700"
+          className="border-b border-b-slate-200 transition-transform duration-700 group-hover:scale-110 dark:border-b-slate-700"
           loading="lazy"
         />
       </figure>
-      <div className="p-4 sm:p-6 sm:pt-4 flex flex-col gap-2">
+      <div className="flex flex-col gap-2 p-4 sm:p-6 sm:pt-4">
         <h2 className="font-bold">{post.title}</h2>
         {post.description && (
-          <p className="text-sm font-light tracking-wide text-ellipsis line-clamp-3 overflow-hidden ">
+          <p className="line-clamp-3 overflow-hidden text-sm font-light tracking-wide text-ellipsis">
             {post.description}
           </p>
         )}

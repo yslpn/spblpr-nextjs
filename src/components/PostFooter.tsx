@@ -52,7 +52,7 @@ export default function PostFooter({
       {data.tags && (
         <div className="mt-24 mb-12 flex flex-col gap-4">
           <h2 className="font-bold">This post was tagged in:</h2>
-          <ul className="flex gap-4 flex-wrap ">
+          <ul className="flex flex-wrap gap-4">
             {data.tags.map((tag: string) => {
               return (
                 <li key={tag}>
@@ -64,13 +64,13 @@ export default function PostFooter({
         </div>
       )}
       {(prevPost || nextPost) && (
-        <div className="flex flex-col lg:flex-row justify-between gap-12 xl:gap-24 mt-24 py-8 border-t border-t-slate-300 dark:border-t-slate-700">
+        <div className="mt-24 flex flex-col justify-between gap-12 border-t border-t-slate-300 py-8 lg:flex-row xl:gap-24 dark:border-t-slate-700">
           {prevPost && (
             <Link
               href={`/${prevPost.templateKey}/${prevPost.slug}`}
-              className="text-balance max-w-[24rem] group rounded-sm outline-offset-[1rem]"
+              className="group max-w-[24rem] rounded-sm text-balance outline-offset-[1rem]"
             >
-              <span className="flex items-center gap-2 mb-2 justify-start text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 duration-300">
+              <span className="mb-2 flex items-center justify-start gap-2 text-sm text-slate-600 duration-300 group-hover:text-slate-700 dark:text-slate-400 dark:group-hover:text-slate-300">
                 <Icon name="prev" className="size-3" />
                 Previous
               </span>
@@ -80,9 +80,9 @@ export default function PostFooter({
           {nextPost && (
             <Link
               href={`/${nextPost.templateKey}/${nextPost.slug}`}
-              className="text-end text-balance max-w-[24rem] group rounded-sm outline-offset-[1rem] ml-auto"
+              className="group ml-auto max-w-[24rem] rounded-sm text-end text-balance outline-offset-[1rem]"
             >
-              <span className="flex items-center gap-2 mb-2 justify-end text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 duration-300">
+              <span className="mb-2 flex items-center justify-end gap-2 text-sm text-slate-600 duration-300 group-hover:text-slate-700 dark:text-slate-400 dark:group-hover:text-slate-300">
                 Next
                 <Icon name="next" className="size-3" />
               </span>

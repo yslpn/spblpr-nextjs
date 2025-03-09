@@ -22,11 +22,11 @@ export default async function Load({
 
   return (
     <Layout>
-      <div className="flex flex-col gap-2 items-center justify-center h-full">
-        <h1 className="text-customText font-bold text-2xl mb-5">
+      <div className="flex h-full flex-col items-center justify-center gap-2">
+        <h1 className="text-customText mb-5 text-2xl font-bold">
           {paymentData[newParams.slug].title}
         </h1>
-        <div className="flex gap-2 items-center text-xs">
+        <div className="flex items-center gap-2 text-xs">
           <div>{paymentData[newParams.slug].details}</div>
           <CopyButton text={paymentData[newParams.slug].details} />
         </div>
@@ -34,7 +34,7 @@ export default async function Load({
         {paymentData[newParams.slug].isCrypto && (
           <span
             dangerouslySetInnerHTML={{ __html: qr }}
-            className="w-[256px] h-[256px]"
+            className="h-[256px] w-[256px]"
           ></span>
         )}
       </div>

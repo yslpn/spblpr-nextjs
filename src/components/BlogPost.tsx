@@ -20,7 +20,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
   }, []);
 
   return (
-    <article className="max-w-5xl p-4 sm:p-12 sm:pt-0 m-auto">
+    <article className="m-auto max-w-5xl p-4 sm:p-12 sm:pt-0">
       <PostHeader data={blog} />
       <div
         className="blog-post"

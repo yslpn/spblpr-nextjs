@@ -11,13 +11,13 @@ export default function BlogPostCard({ post }: { post: Blog }) {
       href={`/blog/${post.slug}/`}
       className={cardClasses + " sm:p-6"}
     >
-      <h3 className="font-bold text-lg text-balance">{post.title}</h3>
+      <h3 className="text-lg font-bold text-balance">{post.title}</h3>
       {post.description && (
-        <p className="text-sm text-balance font-light tracking-wide text-ellipsis line-clamp-3 overflow-hidden">
+        <p className="line-clamp-3 overflow-hidden text-sm font-light tracking-wide text-balance text-ellipsis">
           {post.description}
         </p>
       )}
-      <span className="mt-auto text-slate-500 text-sm font-bold">
+      <span className="mt-auto text-sm font-bold text-slate-500">
         Read more &rarr;
       </span>
     </Link>

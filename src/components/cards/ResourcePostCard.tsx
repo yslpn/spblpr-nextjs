@@ -10,20 +10,20 @@ export default function ResourcesPostCard({ post }: { post: Resources }) {
     <Link
       key={post.slug}
       href={`/resources/${post.slug}/`}
-      className={cardClasses + " items-center group overflow-hidden"}
+      className={cardClasses + " group items-center overflow-hidden"}
     >
-      <figure className="overflow-hidden size-36 sm:size-24 shrink-0 rounded-lg shadow-lg bg-slate-200 dark:bg-slate-700">
+      <figure className="size-36 shrink-0 overflow-hidden rounded-lg bg-slate-200 shadow-lg sm:size-24 dark:bg-slate-700">
         <ExportedImage
           src={post.image}
           alt={post.title}
           width={400}
           height={400}
-          className=" w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
       </figure>
-      <div className="p-4 flex flex-col gap-2">
+      <div className="flex flex-col gap-2 p-4">
         <h2 className="font-bold">{post.title}</h2>
-        <p className="text-sm font-light tracking-wide text-ellipsis line-clamp-2 overflow-hidden ">
+        <p className="line-clamp-2 overflow-hidden text-sm font-light tracking-wide text-ellipsis">
           {post.description}
         </p>
       </div>

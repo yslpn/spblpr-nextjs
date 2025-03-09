@@ -41,6 +41,7 @@ export default async function BlogPage(props: {
   params: Promise<{ page: string }>;
 }) {
   const params = await props.params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const currentPage = parseInt(params.page || "1", 10);
 
   // Pick relevant fields from blogs and sort by date
@@ -57,20 +58,21 @@ export default async function BlogPage(props: {
     return acc;
   }, {});
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const uniqueTags = extractUniqueTags(allBlogs);
 
   return (
     <Layout>
-      <section className="md:max-w-[87%] m-auto flex flex-col gap-6 px-4 sm:px-12 mb-32">
+      <section className="m-auto mb-32 flex flex-col gap-6 px-4 sm:px-12 md:max-w-[87%]">
         <CategoryHeader title="Code Blog" templateKey={blogs[0].templateKey!} />
 
-        <div className="flex gap-8 items-start">
-          <div className="flex flex-wrap gap-4 w-full">
+        <div className="flex items-start gap-8">
+          <div className="flex w-full flex-wrap gap-4">
             {Object.keys(groupedBlogs)
               .sort((a, b) => parseInt(b) - parseInt(a))
               .map((year) => (
                 <div key={year}>
-                  <h2 className="text-2xl mb-8 text-slate-700 dark:text-slate-300">
+                  <h2 className="mb-8 text-2xl text-slate-700 dark:text-slate-300">
                     {year}
                   </h2>
                   <div
@@ -78,7 +80,7 @@ export default async function BlogPage(props: {
                       groupedBlogs[year].length < 2
                         ? "xl:grid-cols-2"
                         : "xl:grid-cols-3"
-                    } gap-4 mb-24`}
+                    } mb-24 gap-4`}
                   >
                     {groupedBlogs[year].map((post) => (
                       <BlogPostCard key={post.slug} post={post as Blog} />
