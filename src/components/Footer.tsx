@@ -1,24 +1,26 @@
-import { Icon } from "./Icon";
+import Link from "next/link";
+import TelegramIcon from "../../public/assets/social/telegram.svg";
+import TwitterIcon from "../../public/assets/social/twitter.svg";
+import VkIcon from "../../public/assets/social/vk.svg";
+import YoutubeIcon from "../../public/assets/social/youtube.svg";
+
+const socials = [
+  { icon: TelegramIcon, link: "https://t.me/spblpr" },
+  { icon: TwitterIcon, link: "https://x.com/spblpr" },
+  { icon: VkIcon, link: "https://vk.com/spblpr" },
+  { icon: YoutubeIcon, link: "https://www.youtube.com/spblpr" },
+];
 
 export default function Footer() {
-  let currentYear = new Date().getFullYear();
-  // get last 2 digits of the currentYear
-  currentYear = parseInt(currentYear.toString().substr(-2));
-
   return (
-    <footer className="bg-slate-200 p-4 sm:p-6 dark:bg-slate-800">
-      <div className="flex items-center justify-between text-xs">
-        <p className="text-slate-700 dark:text-slate-300">
-          Copyright &copy; 2017-{currentYear}
-        </p>
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 rounded-sm outline-offset-8"
-        >
-          <span>Scroll to Top</span>
-          <Icon name="up" className="size-4" />
-        </button>
-      </div>
+    <footer className="flex justify-center p-5">
+      {socials.map(({ icon: Icon, link }, index) => {
+        return (
+          <Link href={link} key={index} target="_blank">
+            <Icon className="h-8 w-8 cursor-pointer" />
+          </Link>
+        );
+      })}
     </footer>
   );
 }
