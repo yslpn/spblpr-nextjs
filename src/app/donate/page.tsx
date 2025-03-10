@@ -1,4 +1,4 @@
-import DonateLogo from "../../../public/assets/donate-logo.svg";
+import DonateLogo from "../../assets/donate-logo.svg";
 import { ButtonLink } from "../../components/ButtonLink";
 import Layout from "../../components/Layout";
 

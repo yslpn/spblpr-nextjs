@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CopyIcon from "../../public/assets/copy.svg";
+import CopyIcon from "../assets/copy.svg";
 
 type CopyButtonProps = {
   text: string;

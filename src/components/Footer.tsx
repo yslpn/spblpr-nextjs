@@ -1,8 +1,8 @@
 import Link from "next/link";
-import TelegramIcon from "../../public/assets/social/telegram.svg";
-import TwitterIcon from "../../public/assets/social/twitter.svg";
-import VkIcon from "../../public/assets/social/vk.svg";
-import YoutubeIcon from "../../public/assets/social/youtube.svg";
+import TelegramIcon from "../assets/social/telegram.svg";
+import TwitterIcon from "../assets/social/twitter.svg";
+import VkIcon from "../assets/social/vk.svg";
+import YoutubeIcon from "../assets/social/youtube.svg";
 
 const socials = [
   { icon: TelegramIcon, link: "https://t.me/spblpr" },
